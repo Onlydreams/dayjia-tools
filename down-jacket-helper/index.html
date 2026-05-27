@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>羽绒服小助手 - 评分与蓬松度转换</title>
+    <meta
+      name="description"
+      content="羽绒服小助手提供充绒量、蓬松度、绒子含量综合评分，适合温度估算，A-B 对比和国标蓬松度与 FP 双向转换。"
+    />
+    <link rel="canonical" href="https://tool.dayjia.com/down-jacket-helper/" />
+    <script type="module" crossorigin src="/down-jacket-helper/assets/index-8JCgbDla.js"></script>
+    <link rel="stylesheet" crossorigin href="/down-jacket-helper/assets/index-BkBkqxcm.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-band" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Down Jacket Helper</p>
+          <h1 id="page-title">羽绒服小助手</h1>
+          <p class="lead">
+            用充绒量、蓬松度、绒子含量和使用场景快速估算保暖表现，顺手比较两件候选款。
+          </p>
+        </div>
+        <div class="hero-meter" aria-label="示例结果">
+          <span class="meter-label">参考温区</span>
+          <strong>-20.7°C</strong>
+          <span class="meter-caption">200g / 800FP / 90%</span>
+        </div>
+      </section>
+
+      <section class="tool-grid" aria-label="羽绒服评分工具">
+        <div class="input-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Calculator</p>
+              <h2>保暖评分</h2>
+            </div>
+            <div class="segmented" aria-label="评分模式">
+              <button
+                class="segment is-active"
+                type="button"
+                data-mode="single"
+                aria-pressed="true"
+              >
+                单件
+              </button>
+              <button
+                class="segment"
+                type="button"
+                data-mode="compare"
+                aria-pressed="false"
+              >
+                A-B 对比
+              </button>
+            </div>
+          </div>
+
+          <form id="single-form" class="form-stack" autocomplete="off">
+            <div id="single-error" class="form-error" role="alert" hidden></div>
+            <div class="field-grid">
+              <label>
+                <span>充绒量 g</span>
+                <input name="fillWeight" inputmode="decimal" value="200" />
+              </label>
+              <label>
+                <span>蓬松度 FP</span>
+                <input name="fp" inputmode="decimal" value="800" />
+              </label>
+              <label>
+                <span>绒子含量 %</span>
+                <input name="downContent" inputmode="decimal" value="90" />
+              </label>
+              <label>
+                <span>价格 元</span>
+                <input name="price" inputmode="decimal" value="1299" />
+              </label>
+            </div>
+
+            <div class="option-grid">
+              <label>
+                <span>绒类型</span>
+                <select name="downType">
+                  <option value="white-goose">白鹅绒</option>
+                  <option value="grey-goose">灰鹅绒</option>
+                  <option value="white-duck">白鸭绒</option>
+                  <option value="grey-duck">灰鸭绒</option>
+                </select>
+              </label>
+              <label>
+                <span>清洁度</span>
+                <select name="cleanliness">
+                  <option value="excellent">≥850mm</option>
+                  <option value="good">600-850mm</option>
+                  <option value="poor">&lt;600mm</option>
+                </select>
+              </label>
+              <label>
+                <span>使用场景</span>
+                <select name="scenario">
+                  <option value="south-commute">南方通勤</option>
+                  <option value="north-commute" selected>北方通勤</option>
+                  <option value="outdoor">户外徒步</option>
+                  <option value="extreme">滑雪/极寒</option>
+                  <option value="sensitive">儿童/老人怕冷</option>
+                </select>
+              </label>
+            </div>
+          </form>
+
+          <form id="compare-form" class="form-stack is-hidden" autocomplete="off">
+            <div id="compare-error" class="form-error" role="alert" hidden></div>
+            <div class="compare-columns">
+              <fieldset>
+                <legend>羽绒服 A</legend>
+                <label><span>充绒量 g</span><input name="a.fillWeight" inputmode="decimal" value="120" /></label>
+                <label><span>蓬松度 FP</span><input name="a.fp" inputmode="decimal" value="650" /></label>
+                <label><span>绒子含量 %</span><input name="a.downContent" inputmode="decimal" value="80" /></label>
+                <label><span>价格 元</span><input name="a.price" inputmode="decimal" value="900" /></label>
+                <label><span>绒类型</span><select name="a.downType"><option value="white-goose">白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck" selected>白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label>
+                <label><span>清洁度</span><select name="a.cleanliness"><option value="excellent">≥850mm</option><option value="good" selected>600-850mm</option><option value="poor">&lt;600mm</option></select></label>
+              </fieldset>
+              <fieldset>
+                <legend>羽绒服 B</legend>
+                <label><span>充绒量 g</span><input name="b.fillWeight" inputmode="decimal" value="160" /></label>
+                <label><span>蓬松度 FP</span><input name="b.fp" inputmode="decimal" value="750" /></label>
+                <label><span>绒子含量 %</span><input name="b.downContent" inputmode="decimal" value="85" /></label>
+                <label><span>价格 元</span><input name="b.price" inputmode="decimal" value="1800" /></label>
+                <label><span>绒类型</span><select name="b.downType"><option value="white-goose" selected>白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck">白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label>
+                <label><span>清洁度</span><select name="b.cleanliness"><option value="excellent" selected>≥850mm</option><option value="good">600-850mm</option><option value="poor">&lt;600mm</option></select></label>
+              </fieldset>
+            </div>
+            <label class="scenario-row">
+              <span>对比场景</span>
+              <select name="scenario">
+                <option value="south-commute">南方通勤</option>
+                <option value="north-commute" selected>北方通勤</option>
+                <option value="outdoor">户外徒步</option>
+                <option value="extreme">滑雪/极寒</option>
+                <option value="sensitive">儿童/老人怕冷</option>
+              </select>
+            </label>
+          </form>
+        </div>
+
+        <aside class="result-panel">
+          <p class="eyebrow">Result</p>
+          <div id="result-view"></div>
+        </aside>
+      </section>
+
+      <section class="utility-band" aria-label="蓬松度转换和说明">
+        <div class="converter-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Converter</p>
+              <h2>蓬松度转换</h2>
+            </div>
+          </div>
+          <div class="converter-grid">
+            <label>
+              <span>国标 cm³/g</span>
+              <input id="gb-input" inputmode="decimal" value="20" />
+            </label>
+            <button id="gb-convert" type="button">换算 FP</button>
+            <output id="gb-output">793 FP</output>
+            <label>
+              <span>FP</span>
+              <input id="fp-input" inputmode="decimal" value="800" />
+            </label>
+            <button id="fp-convert" type="button">换算国标</button>
+            <output id="fp-output">20 cm³/g</output>
+          </div>
+        </div>
+        <div class="notes-panel">
+          <p class="eyebrow">Notes</p>
+          <h2>参数说明</h2>
+          <ul>
+            <li>评分结果用于横向比较，不等同于实验室保暖测试。</li>
+            <li>适合温度基于充绒量和 FP 查表插值，超出范围会钳制到边界。</li>
+            <li>价格为可选项，只用于估算每分成本和每克充绒量成本。</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
