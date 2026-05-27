@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dayjia Tools</title>
+    <meta name="description" content="Dayjia 的小工具集合。">
+    <link rel="canonical" href="https://tool.dayjia.com/">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f7f7f4;
+        --fg: #1f2933;
+        --muted: #667085;
+        --line: #d9ded8;
+        --link: #0f766e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101418;
+          --fg: #e5e7eb;
+          --muted: #a0a7b0;
+          --line: #2f3842;
+          --link: #5eead4;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      main {
+        width: min(880px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 72px 0;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .tools {
+        margin-top: 48px;
+        border-top: 1px solid var(--line);
+      }
+
+      .tool {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line);
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .tool strong {
+        display: block;
+        font-size: 1.05rem;
+      }
+
+      .tool span {
+        color: var(--muted);
+      }
+
+      .tool:hover strong {
+        color: var(--link);
+      }
+
+      .status {
+        white-space: nowrap;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Dayjia Tools</h1>
+      <p>独立维护的小工具入口。</p>
+
+      <section class="tools" aria-label="工具列表">
+        <a class="tool" href="/down-jacket-helper/">
+          <span>
+            <strong>Down Jacket Helper</strong>
+            <span>羽绒服温度与穿搭辅助工具</span>
+          </span>
+          <span class="status">planned</span>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
