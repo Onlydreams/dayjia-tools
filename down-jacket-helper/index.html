@@ -3,14 +3,116 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>羽绒服小助手 - 评分与蓬松度转换</title>
+    <title>羽绒服充绒量计算器 - 羽绒服小助手</title>
     <meta
       name="description"
-      content="羽绒服小助手提供充绒量、蓬松度、绒子含量综合评分，适合温度估算，A-B 对比和国标蓬松度与 FP 双向转换。"
+      content="羽绒服小助手提供充绒量、蓬松度 FP、绒子含量综合评分，估算适合温度，支持 A/B 对比和国标 cm³/g 与 FP 蓬松度双向转换。"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="application-name" content="羽绒服小助手" />
+    <meta property="og:site_name" content="Dayjia Tools" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="羽绒服充绒量计算器 - 羽绒服小助手"
+    />
+    <meta
+      property="og:description"
+      content="输入充绒量、蓬松度 FP、绒子含量、绒类型和清洁度计算保暖评分，基于充绒量与 FP 估算适合温度，并换算国标蓬松度与 FP。"
+    />
+    <meta
+      property="og:url"
+      content="https://tool.dayjia.com/down-jacket-helper/"
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="羽绒服充绒量计算器 - 羽绒服小助手"
+    />
+    <meta
+      name="twitter:description"
+      content="羽绒服评分、适合温度估算、A/B 对比和国标 cm³/g 与 FP 蓬松度转换工具。"
     />
     <link rel="canonical" href="https://tool.dayjia.com/down-jacket-helper/" />
-    <script type="module" crossorigin src="/down-jacket-helper/assets/index-8JCgbDla.js"></script>
-    <link rel="stylesheet" crossorigin href="/down-jacket-helper/assets/index-BkBkqxcm.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://tool.dayjia.com/down-jacket-helper/#app",
+            "name": "羽绒服小助手",
+            "url": "https://tool.dayjia.com/down-jacket-helper/",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "description": "羽绒服小助手根据充绒量、蓬松度 FP、绒子含量、绒类型和清洁度计算保暖评分，基于充绒量与 FP 查表插值估算适合温度，并用使用场景判断保暖匹配度。",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "CNY"
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://tool.dayjia.com/down-jacket-helper/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Dayjia Tools",
+                "item": "https://tool.dayjia.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "羽绒服小助手",
+                "item": "https://tool.dayjia.com/down-jacket-helper/"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://tool.dayjia.com/down-jacket-helper/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "羽绒服 200g 800FP 大概适合多少度？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "充绒量和蓬松度哪个更重要？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "两者都重要。充绒量更像有多少填充物，蓬松度更像这些填充物能撑起多少空气层。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "白鹅绒一定比白鸭绒好吗？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。"
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "国标蓬松度 cm³/g 和 FP 为什么会有差异？",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="/down-jacket-helper/assets/index-DRJ1gUwj.js"></script>
+    <link rel="stylesheet" crossorigin href="/down-jacket-helper/assets/index-CCGyGeWW.css">
   </head>
   <body>
     <main class="app-shell">
@@ -180,6 +282,69 @@
             <li>适合温度基于充绒量和 FP 查表插值，超出范围会钳制到边界。</li>
             <li>价格为可选项，只用于估算每分成本和每克充绒量成本。</li>
           </ul>
+        </div>
+      </section>
+
+      <section class="guide-band" aria-labelledby="guide-title">
+        <div class="guide-heading">
+          <p class="eyebrow">Buying Guide</p>
+          <h2 id="guide-title">羽绒服参数怎么看</h2>
+          <p>
+            选羽绒服时不要只看一个数字。充绒量决定填充多少，蓬松度影响同等重量下能撑起多少空气层，绒子含量影响有效保暖成分比例，三者结合才更接近真实保暖表现。
+          </p>
+        </div>
+        <div class="guide-grid">
+          <article>
+            <h3>充绒量</h3>
+            <p>
+              充绒量通常以克为单位。短款通勤羽绒服可以先看 100g-180g，北方冬季或长款可关注 180g-250g，严寒和户外场景还需要结合长度、面料和内搭判断。
+            </p>
+          </article>
+          <article>
+            <h3>蓬松度 FP</h3>
+            <p>
+              FP 越高，表示羽绒在相同重量下的蓬松体积越大。常见选购区间为 600FP-800FP，高蓬松度更适合追求轻量和压缩体积的场景。
+            </p>
+          </article>
+          <article>
+            <h3>绒子含量</h3>
+            <p>
+              绒子含量越高，有效保暖成分通常越多。日常选购可优先关注 80% 以上，寒冷地区或高预算款可以进一步关注 90% 及以上。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="faq-band" aria-labelledby="faq-title">
+        <div class="guide-heading">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>羽绒服 200g 800FP 大概适合多少度？</summary>
+            <p>
+              按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。
+            </p>
+          </details>
+          <details>
+            <summary>充绒量和蓬松度哪个更重要？</summary>
+            <p>
+              两者都重要。充绒量更像“有多少填充物”，蓬松度更像“这些填充物能撑起多少空气层”。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。
+            </p>
+          </details>
+          <details>
+            <summary>白鹅绒一定比白鸭绒好吗？</summary>
+            <p>
+              在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。
+            </p>
+          </details>
+          <details>
+            <summary>国标蓬松度 cm³/g 和 FP 为什么会有差异？</summary>
+            <p>
+              两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。
+            </p>
+          </details>
         </div>
       </section>
     </main>
