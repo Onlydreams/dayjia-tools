@@ -4,349 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>羽绒服充绒量计算器 - 羽绒服小助手</title>
-    <meta
-      name="description"
-      content="羽绒服小助手根据充绒量、蓬松度 FP、绒子含量估算保暖参数指数和适合温度，支持 A/B 对比和国标 cm³/g 与 FP 蓬松度双向转换。"
-    />
+    <meta name="description" content="羽绒服小助手根据充绒量、蓬松度 FP、绒子含量估算不封顶的保暖指数、0-100 的参考评分和适合温度，支持 A/B 对比和国标 cm³/g 与 FP 蓬松度双向转换。" />
     <meta name="robots" content="index, follow" />
     <meta name="application-name" content="羽绒服小助手" />
     <meta property="og:site_name" content="Dayjia Tools" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="羽绒服充绒量计算器 - 羽绒服小助手"
-    />
-    <meta
-      property="og:description"
-      content="输入充绒量、蓬松度 FP、绒子含量、绒类型和清洁度计算保暖评分，基于充绒量与 FP 估算适合温度，并换算国标蓬松度与 FP。"
-    />
-    <meta
-      property="og:url"
-      content="https://tool.dayjia.com/down-jacket-helper/"
-    />
+    <meta property="og:title" content="羽绒服充绒量计算器 - 羽绒服小助手" />
+    <meta property="og:description" content="输入充绒量、蓬松度 FP、绒子含量、绒类型和清洁度，计算不封顶的保暖指数、0-100 的参考评分和适合温度，并换算国标蓬松度与 FP。" />
+    <meta property="og:url" content="https://tool.dayjia.com/down-jacket-helper/" />
     <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:title"
-      content="羽绒服充绒量计算器 - 羽绒服小助手"
-    />
-    <meta
-      name="twitter:description"
-      content="羽绒服评分、适合温度估算、A/B 对比和国标 cm³/g 与 FP 蓬松度转换工具。"
-    />
+    <meta name="twitter:title" content="羽绒服充绒量计算器 - 羽绒服小助手" />
+    <meta name="twitter:description" content="保暖指数、参考评分、适合温度估算、A/B 对比和国标 cm³/g 与 FP 蓬松度转换工具。" />
     <link rel="canonical" href="https://tool.dayjia.com/down-jacket-helper/" />
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebApplication",
-            "@id": "https://tool.dayjia.com/down-jacket-helper/#app",
-            "name": "羽绒服小助手",
-            "url": "https://tool.dayjia.com/down-jacket-helper/",
-            "applicationCategory": "UtilityApplication",
-            "operatingSystem": "Web",
-            "description": "羽绒服小助手根据充绒量、蓬松度 FP、绒子含量、绒类型和清洁度计算保暖评分，基于充绒量与 FP 查表插值估算适合温度，并用使用场景判断保暖匹配度。",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "CNY"
-            }
-          },
-          {
-            "@type": "BreadcrumbList",
-            "@id": "https://tool.dayjia.com/down-jacket-helper/#breadcrumb",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Dayjia Tools",
-                "item": "https://tool.dayjia.com/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "羽绒服小助手",
-                "item": "https://tool.dayjia.com/down-jacket-helper/"
-              }
-            ]
-          },
-          {
-            "@type": "FAQPage",
-            "@id": "https://tool.dayjia.com/down-jacket-helper/#faq",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "羽绒服 200g 800FP 大概适合多少度？",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。"
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "充绒量和蓬松度哪个更重要？",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "两者都重要。充绒量更像有多少填充物，蓬松度更像这些填充物能撑起多少空气层。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。"
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "白鹅绒一定比白鸭绒好吗？",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。"
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "国标蓬松度 cm³/g 和 FP 为什么会有差异？",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。"
-                }
-              }
-            ]
-          }
-        ]
-      }
+      {"@context":"https://schema.org","@graph":[
+        {"@type":"WebApplication","@id":"https://tool.dayjia.com/down-jacket-helper/#app","name":"羽绒服小助手","url":"https://tool.dayjia.com/down-jacket-helper/","applicationCategory":"UtilityApplication","operatingSystem":"Web","description":"羽绒服小助手根据充绒量、蓬松度 FP、绒子含量、绒类型和清洁度计算不封顶的保暖指数与 0-100 的参考评分，基于充绒量与 FP 查表插值估算适合温度，并用使用场景判断保暖匹配度。","offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"}},
+        {"@type":"BreadcrumbList","@id":"https://tool.dayjia.com/down-jacket-helper/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Dayjia Tools","item":"https://tool.dayjia.com/"},{"@type":"ListItem","position":2,"name":"羽绒服小助手","item":"https://tool.dayjia.com/down-jacket-helper/"}]},
+        {"@type":"FAQPage","@id":"https://tool.dayjia.com/down-jacket-helper/#faq","mainEntity":[
+          {"@type":"Question","name":"羽绒服 200g 800FP 大概适合多少度？","acceptedAnswer":{"@type":"Answer","text":"按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。"}},
+          {"@type":"Question","name":"充绒量和蓬松度哪个更重要？","acceptedAnswer":{"@type":"Answer","text":"两者都重要。充绒量更像有多少填充物，蓬松度更像这些填充物能撑起多少空气层。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。"}},
+          {"@type":"Question","name":"白鹅绒一定比白鸭绒好吗？","acceptedAnswer":{"@type":"Answer","text":"在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。"}},
+          {"@type":"Question","name":"国标蓬松度 cm³/g 和 FP 为什么会有差异？","acceptedAnswer":{"@type":"Answer","text":"两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。"}}
+        ]}
+      ]}
     </script>
-    <script type="module" crossorigin src="/down-jacket-helper/assets/index-BVtcPvMX.js"></script>
-    <link rel="stylesheet" crossorigin href="/down-jacket-helper/assets/index-BQNyyuAQ.css">
+    <script type="module" crossorigin src="/down-jacket-helper/assets/index-BKAafwra.js"></script>
+    <link rel="stylesheet" crossorigin href="/down-jacket-helper/assets/index-D2_X1uNM.css">
   </head>
   <body>
     <main class="app-shell">
       <section class="hero-band" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Down Jacket Helper</p>
-          <h1 id="page-title">羽绒服小助手</h1>
-          <p class="lead">
-            用充绒量、蓬松度、绒子含量和使用场景快速估算保暖表现，顺手比较两件候选款。
-          </p>
-        </div>
-        <div class="hero-meter" aria-label="示例结果">
-          <span class="meter-label">参考温区</span>
-          <strong>-20.7°C</strong>
-          <span class="meter-caption">200g / 800FP / 90%</span>
-        </div>
+        <nav class="anchor-nav" aria-label="页面导航"><a href="#calculator">评估</a><a href="#converter">转换</a><a href="#guide">选购指南</a><a href="#faq">FAQ</a></nav>
+        <div class="hero-copy"><p class="eyebrow">Cold-weather data tool</p><h1 id="page-title">羽绒服<br />小助手</h1><p class="lead">用三项核心参数快速判断一件羽绒服更适合什么温度、是否匹配你的场景。</p><a class="hero-cta" href="#calculator">开始评估 <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-meter" aria-label="示例估算结果"><span class="meter-label">示例估算</span><strong>-20.7°C</strong><span class="meter-caption">200g / 800FP / 90%</span><span class="meter-note">不是当前结果，也不是产品承诺</span></div>
       </section>
 
-      <section class="tool-grid" aria-label="羽绒服评分工具">
+      <section id="calculator" class="workbench" aria-labelledby="calculator-title">
         <div class="input-panel">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Calculator</p>
-              <h2>保暖参数评估</h2>
-            </div>
-            <div class="segmented" aria-label="评分模式">
-              <button
-                class="segment is-active"
-                type="button"
-                data-mode="single"
-                aria-pressed="true"
-              >
-                单件
-              </button>
-              <button
-                class="segment"
-                type="button"
-                data-mode="compare"
-                aria-pressed="false"
-              >
-                A-B 对比
-              </button>
-            </div>
-          </div>
+          <div class="section-heading"><div><p class="eyebrow">01 / Assessment</p><h2 id="calculator-title">保暖参数评估</h2><p class="section-note">输入后实时更新。三项基础参数加使用场景即可完成评估。</p></div><div class="segmented" aria-label="评估模式"><button class="segment is-active" type="button" data-mode="single" aria-pressed="true">单件</button><button class="segment" type="button" data-mode="compare" aria-pressed="false">A-B 对比</button></div></div>
 
-          <form id="single-form" class="form-stack" autocomplete="off">
+          <form id="single-form" class="form-stack" autocomplete="off" novalidate>
             <div id="single-error" class="form-error" role="alert" hidden></div>
-            <div class="field-grid">
-              <label>
-                <span>充绒量 g</span>
-                <input name="fillWeight" inputmode="decimal" value="200" />
-              </label>
-              <label>
-                <span>蓬松度 FP</span>
-                <input name="fp" inputmode="decimal" value="800" />
-              </label>
-              <label>
-                <span>绒子含量 %</span>
-                <input name="downContent" inputmode="decimal" value="90" />
-              </label>
-              <label>
-                <span>价格 元</span>
-                <input name="price" inputmode="decimal" value="1299" />
-              </label>
-            </div>
-
-            <div class="option-grid">
-              <label>
-                <span>绒类型</span>
-                <select name="downType">
-                  <option value="white-goose">白鹅绒</option>
-                  <option value="grey-goose">灰鹅绒</option>
-                  <option value="white-duck">白鸭绒</option>
-                  <option value="grey-duck">灰鸭绒</option>
-                </select>
-              </label>
-              <label>
-                <span>清洁度</span>
-                <select name="cleanliness">
-                  <option value="excellent">≥850mm</option>
-                  <option value="good">600-850mm</option>
-                  <option value="poor">&lt;600mm</option>
-                </select>
-              </label>
-              <label>
-                <span>使用场景</span>
-                <select name="scenario">
-                  <option value="south-commute">南方通勤</option>
-                  <option value="north-commute" selected>北方通勤</option>
-                  <option value="outdoor">户外徒步</option>
-                  <option value="extreme">滑雪/极寒</option>
-                  <option value="sensitive">儿童/老人怕冷</option>
-                </select>
-              </label>
-            </div>
+            <p class="form-group-title">基础参数 <span>完成后即可查看结论</span></p>
+            <div class="field-grid"><label><span>充绒量 <small>g</small></span><input name="fillWeight" inputmode="decimal" placeholder="例如：200" /></label><label><span>蓬松度 <small>FP</small></span><input name="fp" inputmode="decimal" placeholder="例如：700" /></label><label><span>绒子含量 <small>%</small></span><input name="downContent" inputmode="decimal" placeholder="例如：90" /></label></div>
+            <label class="scenario-field"><span>使用场景</span><select name="scenario"><option value="south-commute">南方通勤</option><option value="north-commute" selected>北方通勤</option><option value="outdoor">户外徒步</option><option value="extreme">滑雪/极寒</option><option value="sensitive">儿童/老人怕冷</option></select></label>
+            <details class="optional-details"><summary>补充信息（可选）<span>价格、绒类型、清洁度</span></summary><div class="option-grid"><label><span>价格 <small>元</small></span><input name="price" inputmode="decimal" placeholder="用于价格效率，如：1299" /></label><label><span>绒类型</span><select name="downType"><option value="white-goose">白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck">白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label><label><span>清洁度</span><select name="cleanliness"><option value="excellent">≥850mm</option><option value="good">600-850mm</option><option value="poor">&lt;600mm</option></select></label></div></details>
+            <div class="form-actions"><button id="load-sample" type="button" class="button-secondary">载入示例</button><button id="clear-single" type="button" class="button-text">清空开始评估</button></div>
           </form>
 
-          <form id="compare-form" class="form-stack is-hidden" autocomplete="off">
+          <form id="compare-form" class="form-stack is-hidden" autocomplete="off" novalidate>
             <div id="compare-error" class="form-error" role="alert" hidden></div>
-            <div class="compare-columns">
-              <fieldset>
-                <legend>羽绒服 A</legend>
-                <label><span>充绒量 g</span><input name="a.fillWeight" inputmode="decimal" value="120" /></label>
-                <label><span>蓬松度 FP</span><input name="a.fp" inputmode="decimal" value="650" /></label>
-                <label><span>绒子含量 %</span><input name="a.downContent" inputmode="decimal" value="80" /></label>
-                <label><span>价格 元</span><input name="a.price" inputmode="decimal" value="900" /></label>
-                <label><span>绒类型</span><select name="a.downType"><option value="white-goose">白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck" selected>白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label>
-                <label><span>清洁度</span><select name="a.cleanliness"><option value="excellent">≥850mm</option><option value="good" selected>600-850mm</option><option value="poor">&lt;600mm</option></select></label>
-              </fieldset>
-              <fieldset>
-                <legend>羽绒服 B</legend>
-                <label><span>充绒量 g</span><input name="b.fillWeight" inputmode="decimal" value="160" /></label>
-                <label><span>蓬松度 FP</span><input name="b.fp" inputmode="decimal" value="750" /></label>
-                <label><span>绒子含量 %</span><input name="b.downContent" inputmode="decimal" value="85" /></label>
-                <label><span>价格 元</span><input name="b.price" inputmode="decimal" value="1800" /></label>
-                <label><span>绒类型</span><select name="b.downType"><option value="white-goose" selected>白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck">白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label>
-                <label><span>清洁度</span><select name="b.cleanliness"><option value="excellent" selected>≥850mm</option><option value="good">600-850mm</option><option value="poor">&lt;600mm</option></select></label>
-              </fieldset>
-            </div>
-            <label class="scenario-row">
-              <span>对比场景</span>
-              <select name="scenario">
-                <option value="south-commute">南方通勤</option>
-                <option value="north-commute" selected>北方通勤</option>
-                <option value="outdoor">户外徒步</option>
-                <option value="extreme">滑雪/极寒</option>
-                <option value="sensitive">儿童/老人怕冷</option>
-              </select>
-            </label>
+            <p class="form-group-title">共同场景 <span>两件按相同情境判断</span></p><label class="scenario-field"><span>对比场景</span><select name="scenario"><option value="south-commute">南方通勤</option><option value="north-commute" selected>北方通勤</option><option value="outdoor">户外徒步</option><option value="extreme">滑雪/极寒</option><option value="sensitive">儿童/老人怕冷</option></select></label>
+            <div class="compare-columns"><fieldset class="jacket-a"><legend>羽绒服 A</legend><label><span>充绒量 g</span><input name="a.fillWeight" inputmode="decimal" placeholder="例如：120" /></label><label><span>蓬松度 FP</span><input name="a.fp" inputmode="decimal" placeholder="例如：650" /></label><label><span>绒子含量 %</span><input name="a.downContent" inputmode="decimal" placeholder="例如：80" /></label><label><span>价格 元（可选）</span><input name="a.price" inputmode="decimal" placeholder="例如：900" /></label><label><span>绒类型</span><select name="a.downType"><option value="white-goose">白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck" selected>白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label><label><span>清洁度</span><select name="a.cleanliness"><option value="excellent">≥850mm</option><option value="good" selected>600-850mm</option><option value="poor">&lt;600mm</option></select></label></fieldset><fieldset class="jacket-b"><legend>羽绒服 B</legend><label><span>充绒量 g</span><input name="b.fillWeight" inputmode="decimal" placeholder="例如：160" /></label><label><span>蓬松度 FP</span><input name="b.fp" inputmode="decimal" placeholder="例如：750" /></label><label><span>绒子含量 %</span><input name="b.downContent" inputmode="decimal" placeholder="例如：85" /></label><label><span>价格 元（可选）</span><input name="b.price" inputmode="decimal" placeholder="例如：1800" /></label><label><span>绒类型</span><select name="b.downType"><option value="white-goose" selected>白鹅绒</option><option value="grey-goose">灰鹅绒</option><option value="white-duck">白鸭绒</option><option value="grey-duck">灰鸭绒</option></select></label><label><span>清洁度</span><select name="b.cleanliness"><option value="excellent" selected>≥850mm</option><option value="good">600-850mm</option><option value="poor">&lt;600mm</option></select></label></fieldset></div>
           </form>
         </div>
-
-        <aside class="result-panel">
-          <p class="eyebrow">Result</p>
-          <div id="result-view"></div>
-        </aside>
+        <aside class="result-panel" aria-labelledby="result-title"><p class="eyebrow">Decision summary</p><h2 id="result-title">评估结论</h2><div id="result-view" aria-live="polite" aria-atomic="true"></div></aside>
       </section>
 
-      <section class="utility-band" aria-label="蓬松度转换和说明">
-        <div class="converter-panel">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Converter</p>
-              <h2>蓬松度转换</h2>
-            </div>
-          </div>
-          <div class="converter-grid">
-            <label>
-              <span>国标 cm³/g</span>
-              <input id="gb-input" inputmode="decimal" value="20" />
-            </label>
-            <button id="gb-convert" type="button">换算 FP</button>
-            <output id="gb-output">793 FP</output>
-            <label>
-              <span>FP</span>
-              <input id="fp-input" inputmode="decimal" value="800" />
-            </label>
-            <button id="fp-convert" type="button">换算国标</button>
-            <output id="fp-output">20 cm³/g</output>
-          </div>
-        </div>
-        <div class="notes-panel">
-          <p class="eyebrow">Notes</p>
-          <h2>参数说明</h2>
-          <ul>
-            <li>评分结果用于横向比较，不等同于实验室保暖测试。</li>
-            <li>适合温度基于充绒量和 FP 查表插值，超出范围会钳制到边界。</li>
-            <li>价格为可选项，只用于估算每保暖指数成本和每克充绒量成本。</li>
-          </ul>
-        </div>
-      </section>
+      <section id="converter" class="utility-band" aria-labelledby="converter-title"><div class="converter-panel"><p class="eyebrow">02 / Converter</p><h2 id="converter-title">蓬松度转换</h2><p class="section-note">选择来源单位，输入后立即得到换算结果。</p><div class="converter-flow"><label><span>来源单位</span><select id="converter-mode"><option value="gb-to-fp">国标 cm³/g</option><option value="fp-to-gb">FP</option></select></label><label><span id="converter-input-label">国标蓬松度 cm³/g</span><input id="converter-input" inputmode="decimal" placeholder="例如：20" /></label><button id="swap-converter" type="button" class="swap-button" aria-label="交换转换单位">⇄</button></div><output id="converter-output" class="conversion-output" aria-live="polite">等待输入</output></div><div class="notes-panel"><p class="eyebrow">Method note</p><h2>换算边界</h2><p>常见换算关系适合快速比较不同标签。测试方法、样品处理和压力条件不同，结果不能替代检测报告。</p></div></section>
 
-      <section class="guide-band" aria-labelledby="guide-title">
-        <div class="guide-heading">
-          <p class="eyebrow">Buying Guide</p>
-          <h2 id="guide-title">羽绒服参数怎么看</h2>
-          <p>
-            选羽绒服时不要只看一个数字。充绒量决定填充多少，蓬松度影响同等重量下能撑起多少空气层，绒子含量影响有效保暖成分比例，三者结合才更接近真实保暖表现。
-          </p>
-        </div>
-        <div class="guide-grid">
-          <article>
-            <h3>充绒量</h3>
-            <p>
-              充绒量通常以克为单位。短款通勤羽绒服可以先看 100g-180g，北方冬季或长款可关注 180g-250g，严寒和户外场景还需要结合长度、面料和内搭判断。
-            </p>
-          </article>
-          <article>
-            <h3>蓬松度 FP</h3>
-            <p>
-              FP 越高，表示羽绒在相同重量下的蓬松体积越大。常见选购区间为 600FP-800FP，高蓬松度更适合追求轻量和压缩体积的场景。
-            </p>
-          </article>
-          <article>
-            <h3>绒子含量</h3>
-            <p>
-              绒子含量越高，有效保暖成分通常越多。日常选购可优先关注 80% 以上，寒冷地区或高预算款可以进一步关注 90% 及以上。
-            </p>
-          </article>
-        </div>
-      </section>
+      <section id="guide" class="guide-band" aria-labelledby="guide-title"><div class="guide-heading"><p class="eyebrow">Buying guide</p><h2 id="guide-title">羽绒服参数怎么看</h2><p>选羽绒服时不要只看一个数字。充绒量决定填充多少，蓬松度影响同等重量下能撑起多少空气层，绒子含量影响有效保暖成分比例，三者结合才更接近真实保暖表现。</p></div><div class="guide-grid"><article><span>01</span><h3>充绒量</h3><p>充绒量通常以克为单位。短款通勤羽绒服可以先看 100g-180g，北方冬季或长款可关注 180g-250g，严寒和户外场景还需要结合长度、面料和内搭判断。</p></article><article><span>02</span><h3>蓬松度 FP</h3><p>FP 越高，表示羽绒在相同重量下的蓬松体积越大。常见选购区间为 600FP-800FP，高蓬松度更适合追求轻量和压缩体积的场景。</p></article><article><span>03</span><h3>绒子含量</h3><p>绒子含量越高，有效保暖成分通常越多。日常选购可优先关注 80% 以上，寒冷地区或高预算款可以进一步关注 90% 及以上。</p></article></div></section>
 
-      <section class="faq-band" aria-labelledby="faq-title">
-        <div class="guide-heading">
-          <p class="eyebrow">FAQ</p>
-          <h2 id="faq-title">常见问题</h2>
-        </div>
-        <div class="faq-list">
-          <details open>
-            <summary>羽绒服 200g 800FP 大概适合多少度？</summary>
-            <p>
-              按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。
-            </p>
-          </details>
-          <details>
-            <summary>充绒量和蓬松度哪个更重要？</summary>
-            <p>
-              两者都重要。充绒量更像“有多少填充物”，蓬松度更像“这些填充物能撑起多少空气层”。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。
-            </p>
-          </details>
-          <details>
-            <summary>白鹅绒一定比白鸭绒好吗？</summary>
-            <p>
-              在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。
-            </p>
-          </details>
-          <details>
-            <summary>国标蓬松度 cm³/g 和 FP 为什么会有差异？</summary>
-            <p>
-              两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。
-            </p>
-          </details>
-        </div>
-      </section>
+      <section id="faq" class="faq-band" aria-labelledby="faq-title"><div class="guide-heading"><p class="eyebrow">FAQ</p><h2 id="faq-title">常见问题</h2></div><div class="faq-list"><details open><summary>羽绒服 200g 800FP 大概适合多少度？</summary><p>按当前查表，200g、800FP 约适合 -20.7°C，仅供参考。实际体感还会受衣长、面料防风、版型、内搭、湿度和个人怕冷程度影响。</p></details><details><summary>充绒量和蓬松度哪个更重要？</summary><p>两者都重要。充绒量更像“有多少填充物”，蓬松度更像“这些填充物能撑起多少空气层”。同样充绒量下，高 FP 往往更轻更蓬；同样 FP 下，充绒量不足也难以覆盖严寒场景。</p></details><details><summary>白鹅绒一定比白鸭绒好吗？</summary><p>在本工具同参数评分里，鹅绒系数高于鸭绒；但实际选购仍要看蓬松度、绒子含量、清洁度、工艺和品牌标注。低规格鹅绒不一定优于高规格鸭绒。</p></details><details><summary>国标 cm³/g 和 FP 为什么会有差异？</summary><p>两者来自不同测试体系，测试容器、压力、调湿和样品处理方式可能不同。本工具使用常见换算关系做快速估算，适合选购比较，不建议当作检测报告结论。</p></details></div></section>
     </main>
   </body>
 </html>
