@@ -3,27 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dayjia Tools - 羽绒服保暖评分与实用工具集合</title>
-    <meta name="description" content="Dayjia Tools 提供羽绒服保暖评分、适合温度估算、A-B 对比和 FP 与国标蓬松度换算等轻量实用工具。">
+    <title>Dayjia Tools - 羽绒服保暖参数评估与实用工具集合</title>
+    <meta name="description" content="Dayjia Tools 提供羽绒服保暖参数评估、模型参考温度、A/B 对比、目标温度反推，以及国标蓬松高度与常见 FP 的近似换算工具。">
     <link rel="canonical" href="https://tool.dayjia.com/">
     <style>
       :root {
-        color-scheme: light dark;
-        --bg: #f7f7f4;
-        --fg: #1f2933;
-        --muted: #667085;
-        --line: #d9ded8;
-        --link: #0f766e;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #101418;
-          --fg: #e5e7eb;
-          --muted: #a0a7b0;
-          --line: #2f3842;
-          --link: #5eead4;
-        }
+        color-scheme: dark;
+        --bg: #101b28;
+        --surface: #172a3e;
+        --fg: #f8f5ec;
+        --muted: #aebbc6;
+        --line: #31485c;
+        --accent: #f0be79;
       }
 
       * {
@@ -31,77 +22,180 @@
       }
 
       body {
+        min-width: 320px;
+        min-height: 100dvh;
         margin: 0;
-        background: var(--bg);
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(255, 255, 255, .035) 1px, transparent 1px),
+          var(--bg);
+        background-size: 28px 28px;
         color: var(--fg);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-family: "Avenir Next", "PingFang SC", ui-sans-serif, system-ui, sans-serif;
         line-height: 1.6;
       }
 
       main {
-        width: min(880px, calc(100% - 40px));
+        width: min(960px, calc(100% - 40px));
         margin: 0 auto;
-        padding: 72px 0;
+        padding: clamp(56px, 9vw, 110px) 0;
+      }
+
+      .kicker {
+        margin-bottom: 12px;
+        color: var(--accent);
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
       }
 
       h1 {
-        margin: 0 0 8px;
-        font-size: clamp(2rem, 5vw, 4rem);
-        line-height: 1;
+        max-width: 760px;
+        margin: 0;
+        font-family: "Iowan Old Style", "Songti SC", "Noto Serif CJK SC", serif;
+        font-size: clamp(3.1rem, 9vw, 6.8rem);
+        font-weight: 700;
+        letter-spacing: -.055em;
+        line-height: .88;
+      }
+
+      .lead {
+        max-width: 680px;
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.15rem);
       }
 
       p {
         margin: 0;
-        color: var(--muted);
-        font-size: 1rem;
       }
 
       .tools {
-        margin-top: 48px;
-        border-top: 1px solid var(--line);
+        margin-top: clamp(48px, 8vw, 82px);
       }
 
       .tool {
-        display: flex;
-        justify-content: space-between;
-        gap: 24px;
-        padding: 22px 0;
-        border-bottom: 1px solid var(--line);
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 28px;
+        align-items: end;
+        min-height: 238px;
+        padding: clamp(24px, 5vw, 44px);
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background:
+          radial-gradient(circle at 92% 90%, rgba(240, 190, 121, .18), transparent 28%),
+          var(--surface);
         color: inherit;
         text-decoration: none;
+        transition: border-color .18s, transform .18s;
+      }
+
+      .tool::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 42%;
+        height: 48%;
+        background:
+          repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 24px),
+          repeating-linear-gradient(0deg, rgba(255,255,255,.07) 0 1px, transparent 1px 24px);
+        content: "";
+        mask-image: linear-gradient(to top, #000, transparent);
+        pointer-events: none;
+      }
+
+      .tool-copy, .tool-cta {
+        position: relative;
+        z-index: 1;
+      }
+
+      .tool-category {
+        display: block;
+        margin-bottom: 12px;
+        color: var(--accent);
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .1em;
+        text-transform: uppercase;
       }
 
       .tool strong {
         display: block;
-        font-size: 1.05rem;
+        font-family: "Iowan Old Style", "Songti SC", "Noto Serif CJK SC", serif;
+        font-size: clamp(1.75rem, 4vw, 2.65rem);
+        line-height: 1.05;
       }
 
-      .tool span {
+      .tool-description {
+        display: block;
+        max-width: 610px;
+        margin-top: 14px;
         color: var(--muted);
+        font-size: .95rem;
       }
 
-      .tool:hover strong {
-        color: var(--link);
+      .capabilities {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 22px;
       }
 
-      .status {
+      .capabilities span {
+        padding: 5px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: .72rem;
+      }
+
+      .tool-cta {
+        color: var(--accent);
+        font-size: .9rem;
+        font-weight: 800;
         white-space: nowrap;
-        color: var(--muted);
+      }
+
+      .tool:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      .tool:focus-visible {
+        outline: 3px solid rgba(240, 190, 121, .62);
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 560px) {
+        main { width: min(100% - 28px, 960px); padding-top: 46px; }
+        .tool { grid-template-columns: 1fr; min-height: 0; }
+        .tool-cta { justify-self: start; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .tool { transition: none; }
       }
     </style>
   </head>
   <body>
     <main>
-      <h1>Dayjia Tools 实用工具</h1>
-      <p>羽绒服保暖评分、适合温度估算、FP 与国标蓬松度换算等独立维护的小工具入口。</p>
+      <p class="kicker">Independent utilities</p>
+      <h1>Dayjia<br>Tools</h1>
+      <p class="lead">独立维护、打开即用的轻量工具。先提供羽绒服选购决策，后续按真实需求逐步增加。</p>
 
       <section class="tools" aria-label="工具列表">
         <a class="tool" href="/down-jacket-helper/">
-          <span>
+          <span class="tool-copy">
+            <span class="tool-category">Clothing · Decision tool</span>
             <strong>羽绒服小助手</strong>
-            <span>羽绒服保暖评分、温度估算、A-B 对比和蓬松度换算工具</span>
+            <span class="tool-description">从吊牌参数估算模型参考温度与场景，比较两件候选款，并完成国标蓬松高度与常见 FP 的近似换算。</span>
+            <span class="capabilities"><span>单件评估</span><span>A/B 对比</span><span>目标温度反推</span><span>蓬松度近似换算</span></span>
           </span>
-          <span class="status">available</span>
+          <span class="tool-cta">打开工具 →</span>
         </a>
       </section>
     </main>
